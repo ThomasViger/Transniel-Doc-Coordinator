@@ -9,4 +9,8 @@
       <PackageReference Include="Tesseract" Version="3.3.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\NielTransport.DocCoordinator.Core\NielTransport.DocCoordinator.Core.csproj" />
+    </ItemGroup>
+
 </Project>

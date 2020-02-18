@@ -1,1 +1,0 @@
-Classe métier /// exemple : prospect

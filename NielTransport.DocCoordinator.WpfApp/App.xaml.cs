@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Extensions.DependencyInjection;
+using NielTransport.DocCoordinator.Core.ExternalServices;
+using NielTransport.DocCoordinator.Infrastructure;
 
 namespace NielTransport.DocCoordinator.WpfApp
 {
@@ -13,5 +16,27 @@ namespace NielTransport.DocCoordinator.WpfApp
     /// </summary>
     public partial class App : Application
     {
+        private ServiceProvider _serviceProvider;
+
+        public App()
+        {
+            ServiceCollection serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+
+            _serviceProvider = serviceCollection.BuildServiceProvider();
+        }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            services.AddSingleton<IOcrService>(provider => new OcrService());
+            services.AddScoped<IPdfService>(provider => new PdfService());
+            services.AddSingleton<MainWindow>();
+        }
+
+        private void App_OnStartup(object sender, StartupEventArgs e)
+        {
+            var mainWindow = _serviceProvider.GetService<MainWindow>();
+            mainWindow.Show();
+        }
     }
 }

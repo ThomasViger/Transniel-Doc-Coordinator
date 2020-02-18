@@ -2,7 +2,8 @@ using NUnit.Framework;
 
 namespace NielTransport.DocCoordinator.UnitTests
 {
-    public class Tests
+    [TestFixture]
+    public class PdfMergerServiceTest
     {
         [SetUp]
         public void Setup()
@@ -10,8 +11,9 @@ namespace NielTransport.DocCoordinator.UnitTests
         }
 
         [Test]
-        public void Test1()
+        public void Merge_TwoPdfFile_OnePdfFile()
         {
+            
             Assert.Pass();
         }
     }
