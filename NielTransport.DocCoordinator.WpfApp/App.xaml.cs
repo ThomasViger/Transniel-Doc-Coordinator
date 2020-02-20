@@ -29,15 +29,7 @@ namespace NielTransport.DocCoordinator.WpfApp
             services.AddScoped<MainWindow>();
         }
 
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            MainWindow mainWindow = _serviceProvider.GetService<MainWindow>();
-            mainWindow.Show();
-            
-            base.OnStartup(e);
-        }
-
-        public void App_OnStartup(object sender, StartupEventArgs e)
+        private void App_OnStartup(object sender, StartupEventArgs e)
         {
             MainWindow mainWindow = _serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
