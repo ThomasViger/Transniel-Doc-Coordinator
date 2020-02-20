@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using NielTransport.DocCoordinator.Core.ExternalServices;
+using NielTransport.DocCoordinator.Core.UseCases;
 using NielTransport.DocCoordinator.Infrastructure;
 
 namespace NielTransport.DocCoordinator.WpfApp
@@ -28,14 +23,23 @@ namespace NielTransport.DocCoordinator.WpfApp
 
         private void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IOcrService>(provider => new OcrService());
-            services.AddScoped<IPdfService>(provider => new PdfService());
-            services.AddSingleton<MainWindow>();
+            services.AddScoped<IOcrService, OcrService>();
+            services.AddScoped<IPdfService, PdfService>();
+            services.AddScoped<MergePdfUseCase>();
+            services.AddScoped<MainWindow>();
         }
 
-        private void App_OnStartup(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            var mainWindow = _serviceProvider.GetService<MainWindow>();
+            MainWindow mainWindow = _serviceProvider.GetService<MainWindow>();
+            mainWindow.Show();
+            
+            base.OnStartup(e);
+        }
+
+        public void App_OnStartup(object sender, StartupEventArgs e)
+        {
+            MainWindow mainWindow = _serviceProvider.GetService<MainWindow>();
             mainWindow.Show();
         }
     }

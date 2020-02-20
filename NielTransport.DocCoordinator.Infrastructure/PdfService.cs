@@ -6,7 +6,7 @@ namespace NielTransport.DocCoordinator.Infrastructure
     {
         public void Merge()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

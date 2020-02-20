@@ -5,8 +5,8 @@ namespace NielTransport.DocCoordinator.Core.UseCases
 {
     public class MergePdfUseCase
     {
-        private IPdfService pdfService;
-        
+        private readonly IPdfService pdfService;
+
         public MergePdfUseCase(IPdfService pdfService)
         {
             this.pdfService = pdfService;
@@ -14,7 +14,7 @@ namespace NielTransport.DocCoordinator.Core.UseCases
 
         public void Execute()
         {
-            return;
+           this.pdfService.Merge();
         }
     }
 }
