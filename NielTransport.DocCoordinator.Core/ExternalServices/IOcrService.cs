@@ -2,6 +2,6 @@
 {
     public interface IOcrService
     {
-        public void Translate();
+        public string Translate();
     }
 }

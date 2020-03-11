@@ -26,6 +26,7 @@ namespace NielTransport.DocCoordinator.WpfApp
             services.AddScoped<IOcrService, OcrService>();
             services.AddScoped<IPdfService, PdfService>();
             services.AddScoped<MergePdfUseCase>();
+            services.AddScoped<TranslateDocumentUseCase>();
             services.AddScoped<MainWindow>();
         }
 

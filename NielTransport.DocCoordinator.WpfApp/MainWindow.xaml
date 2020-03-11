@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock>coucou</TextBlock>
         <Label Name="Label" Content="Hello .NET Core!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" />
     </Grid>
 </Window>

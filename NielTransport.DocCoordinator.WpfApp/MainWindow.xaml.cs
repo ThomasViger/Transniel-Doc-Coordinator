@@ -10,12 +10,12 @@ namespace NielTransport.DocCoordinator.WpfApp
     public partial class MainWindow : Window
     {
   
-        public MainWindow(MergePdfUseCase mergePdfUseCase)
+        public MainWindow(MergePdfUseCase mergePdfUseCase, TranslateDocumentUseCase translateDocumentUseCase)
         {
             InitializeComponent();
-
-            Label.Content = "Test Pour voir ";
-            mergePdfUseCase.Execute();
+            
+            string text = translateDocumentUseCase.Execute();
+            Label.Content = text;
         }
     }
 }

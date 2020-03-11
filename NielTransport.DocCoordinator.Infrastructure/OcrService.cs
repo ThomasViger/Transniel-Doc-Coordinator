@@ -7,9 +7,9 @@ namespace NielTransport.DocCoordinator.Infrastructure
 {
     public class OcrService : IOcrService
     {
-        public void Translate()
+        public string Translate()
         { 
-            string testImagePath = "./testocr.jpg";
+            string testImagePath = "C:/Users/conta/Desktop/testocr.jpg";
             
             try
             {
@@ -18,8 +18,7 @@ namespace NielTransport.DocCoordinator.Infrastructure
                 Page page = engine.Process(img);
                 string text = page.GetText();
                 
-                Console.WriteLine("Indice de confiance: {0}", page.GetMeanConfidence());
-                Console.WriteLine("Text (GetText): \r\n{0}", text);
+                return text;
             }
             catch (Exception error)
             {
@@ -27,6 +26,8 @@ namespace NielTransport.DocCoordinator.Infrastructure
                 Console.WriteLine("Unexpected Error: " + error.Message);
                 Console.WriteLine("Details: ");
                 Console.WriteLine(error.ToString());
+
+                return error.Message;
             }
 
         }

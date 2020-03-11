@@ -13,4 +13,11 @@
       <ProjectReference Include="..\NielTransport.DocCoordinator.Core\NielTransport.DocCoordinator.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="tessdata\fra.traineddata" />
+      <Content Include="tessdata\fra.traineddata">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
